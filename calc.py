@@ -9,11 +9,11 @@ CORS(app)
 def calculate():
     body = request.get_json()
     if body:
-        operation_type = body.get('operation_type')
-        x = body.get('x',)
-        y = body.get('y',)
+        operation_type = body.get('operation_type', None)
+        x = body.get('x')
+        y = body.get('y')
     else:
-        operation_type = request.args.get('operation_type')
+        operation_type = request.args.get('operation_type', type=str)
         x = request.args.get('x', type=int)
         y = request.args.get('y', type=int)
 
@@ -32,11 +32,15 @@ def calculate():
                         abort(400)
         else:
             abort(400)
-        
-        return jsonify({
+            
+            
+            
+        data = {
             'slackUsername': ' Triumph Edet',
-            'result': result,
-        })
+            'result': result
+        }
+        
+        return data
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000, debug=True)
