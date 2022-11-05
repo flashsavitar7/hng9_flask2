@@ -20,27 +20,28 @@ def calculate():
     result = 0
         
     if operation_type != None and x != None and y != None:
-        operation_type = operation_type.lower()
-        if (operation_type == "addition" or operation_type == "subtraction" or operation_type == "multiplication"):
+            operation_type.lower()
+            if (operation_type == "addition" or operation_type == "subtraction" or operation_type == "multiplication"):
                 if operation_type == "addition":
-                    result = x + y
+                        result = x + y
                 elif operation_type == "subtraction":
-                        result = x - y
+                            result = x - y
                 elif operation_type == "multiplication":
-                        result = x * y
+                            result = x * y
                 else:
-                        abort(400)
-        else:
-            abort(400)
+                    abort(400)
+            else:
+                abort(400)
+                
             
             
-            
-        data = {
-            'slackUsername': ' Triumph Edet',
-            'result': result
-        }
+    data = {
+        'slackUsername': 'Triumph Edet',
+        'operation_type': operation_type,
+        'result': result
+    }
         
-        return data
+    return data
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000, debug=True)
